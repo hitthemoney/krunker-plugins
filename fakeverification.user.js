@@ -2,7 +2,7 @@
 // @name         Fake verification
 // @namespace    https://github.com/hitthemoney/krunker-plugins
 // @version      0.1
-// @description  fake krunker verification on profiles
+// @description  fake krunker verification on profiles (unless you are already verified :o)
 // @author       hitthemoney
 // @match        https://krunker.io/social.html*
 // @grant        none
