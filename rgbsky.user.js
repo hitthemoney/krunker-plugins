@@ -25,7 +25,7 @@ Object.defineProperty(Object.prototype, "renderer", {
 })
 
 // Main Function
-var init = (() => {
+let init = (() => {
     let hasRan = false;
     let hue = 0;
     let color = startCol;
