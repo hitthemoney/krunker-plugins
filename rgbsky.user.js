@@ -10,7 +10,7 @@ let startCol = "red"
 let kr;
 
 // Prevents sky dome from generating and calls the init function
-Object.defineProperty(Object.prototype, "skyCol", { enumerable: false, get () { init(); return startCol; }})
+Object.defineProperty(Object.prototype, "skyC", { enumerable: false, get () { init(); return startCol; }})
 
 // Hooks renderer
 Object.defineProperty(Object.prototype, "renderer", {
