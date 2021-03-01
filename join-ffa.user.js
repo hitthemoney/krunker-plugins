@@ -8,12 +8,12 @@
 // @grant        none
 // ==/UserScript==
 
-let joinKey = "F4"; // Join new FFA game key, case sensitive
+const joinKey = "F4"; // Join new FFA game shortcut key, case sensitive
 
 const getTopFFA = async () => {
-    let region = window.localStorage.pingRegion7 || (await fetch(`https://matchmaker.krunker.io/game-info?game=${encodeURIComponent(window.getGameActivity().id)}`).then(res => res.json()))[1];
-    let gameData = (await fetch(`https://matchmaker.krunker.io/game-list?hostname=${window.location.hostname}`).then(res => res.json())).games;
-    let filData = gameData.filter(game => game[1] === region && game[4].g === 0 && game[4].c === 0 && game[2] < game[3]).sort((x, y) => y[2] - x[2]);
+    const region = window.localStorage.pingRegion7 || (await fetch(`https://matchmaker.krunker.io/game-info?game=${encodeURIComponent(window.getGameActivity().id)}`).then(res => res.json()))[1]; // get region from localStorage, if null or undefined then fetch current game data and get the region
+    const gameData = (await fetch(`https://matchmaker.krunker.io/game-list?hostname=${window.location.hostname}`).then(res => res.json())).games; // fetch game data
+    const filData = gameData.filter(game => game[1] === region && game[4].g === 0 && game[4].c === 0 && game[2] < game[3]).sort((x, y) => y[2] - x[2]); // filter and sort game data
     return filData[0];
 }
 
