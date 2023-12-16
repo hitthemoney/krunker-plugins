@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         Join Random Game Mode
-// @namespace    https://github.com/hitthemoney/krunker-plugins
-// @version      1.5.0
+// @namespace    violentmonkey
+// @version      1.3.3.7
 // @description  Join a new game on your region with the highest player count for a random game mode that is not full when you press a certain key
-// @author       hitthemoney
+// @author       hitthemoney, moongazer07
 // @match        *://krunker.io/*
 // @exclude     *://krunker.io/social.html*
 // @exclude     *://krunker.io/editor.html*
@@ -34,7 +34,7 @@ const getRandomGameMode = async () => {
 const getTopGame = async () => {
     const region = window.localStorage.pingRegion7 || (await fetch(`https://matchmaker.krunker.io/game-info?game=${encodeURIComponent(window.getGameActivity().id)}`).then(res => res.json()));
     const gameData = (await fetch(`https://matchmaker.krunker.io/game-list?hostname=${window.location.hostname}`).then(res => res.json())).games;
-    
+
     const targetGameMode = await getRandomGameMode();
 
     const filData = gameData.filter(game =>
@@ -43,7 +43,7 @@ const getTopGame = async () => {
         game[4].c === 0 &&
         game[2] < game[3]
     ).sort((x, y) => y[2] - x[2]);
-    
+
     return filData[0];
 }
 
